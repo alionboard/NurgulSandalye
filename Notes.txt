@@ -1,0 +1,12 @@
+RUN THE FOLLOWING COMMANDS ON THE PROJECT "INFRASTRUCTURE" *************************
+
+add-migration InitialModel -context NurgulSandalye.DataAccess.Concrete.EfCore.NurgulSandalyeContext -OutputDir "DataAccess\Concrete\EfCore\Migrations" 
+
+update-database -context  NurgulSandalye.DataAccess.Concrete.EfCore.NurgulSandalyeContext
+
+
+
+
+add-migration InitialIdentityModel -context NurgulSandalye.DataAccess.Concrete.Identity.AppIdentityDbContext -OutputDir "NurgulSandalye.DataAccess.Concrete.Identity.AppIdentityDbContext\Migrations"   
+
+update-database -context NurgulSandalye.DataAccess.Concrete.Identity.AppIdentityDbContext

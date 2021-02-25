@@ -1,0 +1,74 @@
+﻿@model List<SubCategory>
+
+<li>
+    <a href="#">Megamenu <span class="open-dropdown"><i class="fa fa-angle-down"></i></span></a>
+    <div class="navbar-dropdown">
+        <div class="navbar-box">
+            <div class="box-2">
+                <div class="box clearfix">
+                    <div class="row">
+                        <div class="clearfix">
+                            <div class="col-md-3">
+                                <ul>
+                                    <li class="label">Sandalye</li>
+                                    @foreach (var subCategory in Model.Where(x=>x.CategoryId==1))
+                                    {
+                                        <li><a href="javascript:void(0);">@subCategory.Name</a></li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <ul>
+                                    <li class="label">Bar SANDALYESİ</li>
+                                    @foreach (var subCategory in Model.Where(x=>x.CategoryId == 2))
+                                    {
+                                        <li><a href="javascript:void(0);">@subCategory.Name</a></li>
+                                    }
+                                 
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <ul>
+                                    <li class="label">MASA</li>
+                                    @foreach (var subCategory in Model.Where(x => x.CategoryId == 3))
+                                    {
+                                        <li><a href="javascript:void(0);">@subCategory.Name</a></li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <ul>
+                                    <li class="label">BAR MASASI</li>
+                                    @foreach (var subCategory in Model.Where(x => x.CategoryId == 4))
+                                    {
+                                        <li><a href="javascript:void(0);">@subCategory.Name</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <div class="col-md-3">
+                                <ul>
+                                    <li class="label">AKSESUAR</li>
+                                    @foreach (var subCategory in Model.Where(x => x.CategoryId == 5))
+                                    {
+                                        <li><a href="javascript:void(0);">@subCategory.Name</a></li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <ul>
+                                    <li class="label">BAHÇE MOBİLYASI</li>
+                                    @foreach (var subCategory in Model.Where(x => x.CategoryId == 6))
+                                    {
+                                        <li><a href="javascript:void(0);">@subCategory.Name</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!--/box-->
+            </div> <!--/box-2-->
+        </div> <!--/navbar-box-->
+    </div> <!--/navbar-dropdown-->
+</li>
