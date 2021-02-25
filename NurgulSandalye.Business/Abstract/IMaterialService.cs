@@ -9,6 +9,6 @@ namespace NurgulSandalye.Business.Abstract
 {
     public interface IMaterialService
     {
-        Task<List<Material>> ListPopularProductAsync();
+        Task<List<Material>> ListAllMaterialAsync();
     }
 }

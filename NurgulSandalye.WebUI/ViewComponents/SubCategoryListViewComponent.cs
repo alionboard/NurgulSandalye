@@ -20,7 +20,7 @@ namespace NurgulSandalye.WebUI.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var subCategories = await _service.ListAllAsync();
+            var subCategories = await _service.ListAllSubCategoryAsync();
             return View(subCategories);
         }
     }

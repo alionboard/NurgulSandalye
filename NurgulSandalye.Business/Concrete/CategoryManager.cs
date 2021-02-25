@@ -17,7 +17,7 @@ namespace NurgulSandalye.Business.Concrete
         {
             _repository = repository;
         }
-        public async Task<List<Category>> ListAllAsync()
+        public async Task<List<Category>> ListAllCategoryAsync()
         {
            return await _repository.ListAllAsync();
         }

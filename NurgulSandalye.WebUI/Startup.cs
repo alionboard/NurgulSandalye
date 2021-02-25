@@ -12,6 +12,8 @@ using NurgulSandalye.Business.Concrete;
 using NurgulSandalye.DataAccess.Abstract;
 using NurgulSandalye.DataAccess.Concrete.EfCore;
 using NurgulSandalye.DataAccess.Concrete.EfCore.Seed;
+using NurgulSandalye.WebUI.Interfaces;
+using NurgulSandalye.WebUI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +47,7 @@ namespace NurgulSandalye.WebUI
             services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<IMaterialService, MaterialManager>();
+            services.AddScoped<IShopIndexViewModelService, ShopIndexViewModelManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

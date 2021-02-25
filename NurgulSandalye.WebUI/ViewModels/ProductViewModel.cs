@@ -18,6 +18,7 @@ namespace NurgulSandalye.WebUI.ViewModels
 
         public decimal Price { get; set; }
 
+        public bool Discount { get; set; }
         public decimal? DiscountedPrice { get; set; }
 
         public Material Material { get; set; }

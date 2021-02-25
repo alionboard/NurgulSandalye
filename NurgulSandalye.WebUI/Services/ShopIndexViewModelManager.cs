@@ -34,25 +34,44 @@ namespace NurgulSandalye.WebUI.Services
                     Id = x.Id,
                     Name = x.Name,
                     Price = x.Price,
-                    PictureUris = x.PictureUris.ToList()
-                }).ToList()
+                    //PictureUris = x.PictureUris.ToList(),
+                    Description = x.Description,
+                    Discount = x.Discount,
+                    DiscountedPrice = x.DiscountedPrice,
+                    Material = x.Material,
+                }).ToList(),
+                Categories = await GetCategoryListItem(),
+                SubCategories = await GetSubCategoryListItem(),
+                Materials = await GetMaterialListItem()
             };
         }
 
-        public Task<List<SelectListItem>> GetCategoryListItem()
+        public async Task<List<SelectListItem>> GetCategoryListItem()
         {
-            throw new NotImplementedException();
+            return (await _categoryService.ListAllCategoryAsync()).Select(x => new SelectListItem()
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name
+            }).ToList();
         }
 
-        public Task<List<SelectListItem>> GetMaterialListItem()
+        public async Task<List<SelectListItem>> GetMaterialListItem()
         {
-            throw new NotImplementedException();
+            return (await _materialService.ListAllMaterialAsync()).Select(x => new SelectListItem()
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name
+            }).ToList();
         }
 
 
-        public Task<List<SelectListItem>> GetSubCategoryListItem()
+        public async Task<List<SelectListItem>> GetSubCategoryListItem()
         {
-            throw new NotImplementedException();
+            return (await _subCategoryService.ListAllSubCategoryAsync()).Select(x => new SelectListItem()
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name
+            }).ToList();
         }
     }
 }
