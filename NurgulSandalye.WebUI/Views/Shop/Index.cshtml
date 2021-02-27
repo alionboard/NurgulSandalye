@@ -112,15 +112,15 @@
                             <div class="filter-content">
                                 <span class="checkbox">
                                     <input type="radio" name="radiogroup-stock" id="availableId1" checked="checked">
-                                    <label for="availableId1">Stokta mevcut <i>(152)</i></label>
+                                    <label for="availableId1">Stokta mevcut </label>
                                 </span>
                                 <span class="checkbox">
                                     <input type="radio" name="radiogroup-stock" id="availableId2">
-                                    <label for="availableId2">1 hafta <i>(100)</i></label>
+                                    <label for="availableId2">1 hafta </label>
                                 </span>
                                 <span class="checkbox">
                                     <input type="radio" name="radiogroup-stock" id="availableId3">
-                                    <label for="availableId3">2 hafta <i>(80)</i></label>
+                                    <label for="availableId3">2 hafta </label>
                                 </span>
                             </div>
                         </div> <!--/filter-box-->
@@ -154,12 +154,13 @@
                                 {
                                     <span class="checkbox">
                                         <input type="radio" name="radiogroup-type" id="typeId+@category.Value" checked="checked">
-                                        <label for="typeIdAll">@category.Text</label>
+                                        <label for="typeId+@category.Value">@category.Text</label>
                                     </span>
                                 }
 
                             </div>
                         </div> <!--/filter-box-->
+                         @*************todo:ViewComponentle yap seçilen categoryId ye göre subcategoryleri bastır**********************@
                         <div class="filter-box active">
                             <div class="title">
                                 Alt Kategori
@@ -172,8 +173,8 @@
                                 @foreach (var subCategory in Model.SubCategories)
                                 {
                                     <span class="checkbox">
-                                        <input type="radio" name="radiogroup-type" id="typeId1">
-                                        <label for="typeId1">@subCategory.Text</label>
+                                        <input type="radio" name="radiogroup-type" id="subtypeId+@subCategory.Value">
+                                        <label for="subtypeId+@subCategory.Value">@subCategory.Text</label>
                                     </span>
                                 }
                             </div>
@@ -192,7 +193,7 @@
                                 {
                                     <span class="checkbox">
                                         <input type="radio" name="radiogroup-material" id="matId+@material.Value">
-                                        <label for="matIdAll">@material.Text</label>
+                                        <label for="matId+@material.Value">@material.Text</label>
                                     </span>
                                 }
                             </div>
@@ -236,7 +237,7 @@
                                 <article>
                                     <div class="info">
                                         <span>
-                                            <a href="#productid1" class="mfp-open" data-title="Quick wiew"><i class="icon icon-eye"></i></a>
+                                            <a href="#@product.Id" class="mfp-open" data-title="Quick wiew"><i class="icon icon-eye"></i></a>
                                         </span>
                                     </div>
                                     <div class="btn btn-add">
@@ -244,7 +245,7 @@
                                     </div>
                                     <div class="figure-grid">
                                         <div class="image">
-                                            <a href="#productid1" class="mfp-open">
+                                            <a href="#@product.Id" class="mfp-open">
                                                 <img src="~/images/SeedImages/lotussandalye.jpeg" alt="" width="360" height="306" />
                                             </a>
                                         </div>
@@ -293,95 +294,81 @@
             </div><!--/row-->
             <!-- ========================  Product info popup - quick view ======================== -->
 
-            <div class="popup-main mfp-hide" id="productid1">
+            @foreach (var product in Model.Products)
+            {
+                <div class="popup-main mfp-hide" id="@product.Id">
 
-                <!-- === product popup === -->
+                    <!-- === product popup === -->
 
-                <div class="product">
+                    <div class="product">
+                        <!-- === product gallery === -->
 
-                    <!-- === popup-title === -->
+                        <!-- === popup-title === -->
 
-                    <div class="popup-title">
-                        <div class="h1 title">Laura <small>product category</small></div>
-                    </div>
+                        <div class="popup-title">
+                            <div class="h1 title">@product.Name</div>
+                        </div>
 
-                    <!-- === product gallery === -->
+                        <div class="owl-product-gallery">
+                            <img src="assets/images/product-1.png" alt="" width="640" />
+                            <img src="assets/images/product-2.png" alt="" width="640" />
+                            <img src="assets/images/product-3.png" alt="" width="640" />
+                            <img src="assets/images/product-4.png" alt="" width="640" />
+                        </div>
 
-                    <div class="owl-product-gallery">
-                        <img src="assets/images/product-1.png" alt="" width="640" />
-                        <img src="assets/images/product-2.png" alt="" width="640" />
-                        <img src="assets/images/product-3.png" alt="" width="640" />
-                        <img src="assets/images/product-4.png" alt="" width="640" />
-                    </div>
 
-                    <!-- === product-popup-info === -->
+                        <!-- === product-popup-info === -->
 
-                    <div class="popup-content">
-                        <div class="product-info-wrapper">
-                            <div class="row">
+                        <div class="popup-content">
+                            <div class="product-info-wrapper">
+                                <div class="row">
 
-                                <!-- === left-column === -->
+                                    <!-- === left-column === -->
 
-                                <div class="col-sm-6">
-                                    <div class="info-box">
-                                        <strong>Maifacturer</strong>
-                                        <span>Brand name</span>
-                                    </div>
-                                    <div class="info-box">
-                                        <strong>Materials</strong>
-                                        <span>Wood, Leather, Acrylic</span>
-                                    </div>
-                                    <div class="info-box">
-                                        <strong>Availability</strong>
-                                        <span><i class="fa fa-check-square-o"></i> in stock</span>
-                                    </div>
-                                </div>
-
-                                <!-- === right-column === -->
-
-                                <div class="col-sm-6">
-                                    <div class="info-box">
-                                        <strong>Available Colors</strong>
-                                        <div class="product-colors clearfix">
-                                            <span class="color-btn color-btn-red"></span>
-                                            <span class="color-btn color-btn-blue checked"></span>
-                                            <span class="color-btn color-btn-green"></span>
-                                            <span class="color-btn color-btn-gray"></span>
-                                            <span class="color-btn color-btn-biege"></span>
+                                    <div class="col-sm-12">
+                                        <div class="info-box">
+                                            <strong>Üretici</strong>
+                                            <span>Nurgül Sandalye</span>
+                                        </div>
+                                        <div class="info-box">
+                                            <strong>Malzeme</strong>
+                                            @*<span>@product.Material.Name</span>*@
+                                        </div>
+                                        <div class="info-box">
+                                            <strong>Stok Durumu</strong>
+                                            <span><i class="fa fa-check-square-o"></i> in stock</span>
                                         </div>
                                     </div>
-                                    <div class="info-box">
-                                        <strong>Choose size</strong>
-                                        <div class="product-colors clearfix">
-                                            <span class="color-btn color-btn-biege">S</span>
-                                            <span class="color-btn color-btn-biege checked">M</span>
-                                            <span class="color-btn color-btn-biege">XL</span>
-                                            <span class="color-btn color-btn-biege">XXL</span>
-                                        </div>
-                                    </div>
+                                    <!-- === right-column === -->
+                                </div><!--/row-->
+                            </div> <!--/product-info-wrapper-->
+                        </div><!--/popup-content-->
+                        <!-- === product-popup-footer === -->
+
+                        <div class="popup-table">
+                            <div class="popup-cell">
+                                <div class="price">
+                                    @if (product.Discount == true)
+                                    {
+                                        <span class="h3">₺ @product.DiscountedPrice<small>₺ @product.Price</small></span>
+                                    }
+                                    else
+                                    {
+                                        <span class="h3">₺ @product.Price</span>
+                                    }
                                 </div>
-
-                            </div><!--/row-->
-                        </div> <!--/product-info-wrapper-->
-                    </div><!--/popup-content-->
-                    <!-- === product-popup-footer === -->
-
-                    <div class="popup-table">
-                        <div class="popup-cell">
-                            <div class="price">
-                                <span class="h3">$ 1999,00 <small>$ 2999,00</small></span>
+                            </div>
+                            <div class="popup-cell">
+                                <div class="popup-buttons">
+                                    <a href="product.html"><span class="icon icon-eye"></span><span class="hidden-xs">Daha Fazla Bilgi</span></a>
+                                    <a href="javascript:void(0);"><span class="icon icon-cart"></span> <span class="hidden-xs">Satın Al</span></a>
+                                </div>
                             </div>
                         </div>
-                        <div class="popup-cell">
-                            <div class="popup-buttons">
-                                <a href="product.html"><span class="icon icon-eye"></span> <span class="hidden-xs">View more</span></a>
-                                <a href="javascript:void(0);"><span class="icon icon-cart"></span> <span class="hidden-xs">Buy</span></a>
-                            </div>
-                        </div>
-                    </div>
+                    </div> <!--/product-->
+                </div> <!--popup-main-->
 
-                </div> <!--/product-->
-            </div> <!--popup-main-->
+            }
         </div><!--/container-->
     </section>
 
