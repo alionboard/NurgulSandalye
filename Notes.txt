@@ -1,4 +1,4 @@
-RUN THE FOLLOWING COMMANDS ON THE PROJECT "" *************************
+RUN THE FOLLOWING COMMANDS ON THE PROJECT "sa" *************************
 
 add-migration InitialModel -context NurgulSandalye.DataAccess.Concrete.EfCore.NurgulSandalyeContext -OutputDir "DataAccess\Concrete\EfCore\Migrations" 
 
